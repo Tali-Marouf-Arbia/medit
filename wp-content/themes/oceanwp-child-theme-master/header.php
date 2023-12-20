@@ -73,7 +73,7 @@ $lien=get_field('lien_google_maps', 161);
 		<p class="popup-informations">Vous souhaitez plus d'informations concernant cet événement ?</p>
 		<?php
 		// On insère le formulaire de demandes de renseignements
-		do_shortcode('[contact-form-7 id="910" title="Formulaire salon New York"]');
+		echo do_shortcode('[contact-form-7 id="910" title="Formulaire salon New York"]');
 		?>
 	</div>
 </div>
@@ -81,29 +81,39 @@ $lien=get_field('lien_google_maps', 161);
 <!-- Code pour fermer la popup -->
 
 <script>
-$('.popup-close').click(function(){
-	$(this).parent().hide();
-})
+// jQuery(document).ready(function($) {
+//   $('.popup-close').click(function(){
+// 	$(this).parent().hide();
+//   })
+// })
+jQuery(document).ready(function($) {
+    $('.popup-close').click(function() {
+        $('.popup-salon').hide();
+    });
+});
+
 </script>
 
 
 <!-- Ajout d'un bouton contact au menu -->
 
 <?php
+// if not exist => s assure que la fonction cnt btn n est declaree que si elle n existe pas deja
+if (!function_exists('contact_btn')) {
+    function contact_btn() {
+        // Code du bouton
+        $string = '<a href="/contact" class="contact-btn">Nous contacter</a>';
 
-/**
- * Shortcode pour ajouter un bouton je l ai comm car erreure fatal double declaration => function.php
- */
-// function contact_btn() {
+        // On retourne le code
+        return $string;
+    }
+}
 
-// 	// Code du bouton
-// 	$string .= '<a href="/contact" class="contact-btn">Nous contacter</a>';
-
-// 	// On retourne le code
-// 	return $string;
-
-// }
-// // On publie le shortcode
-// add_shortcode('contact', 'contact_btn');
+// On publie le shortcode
+add_shortcode('contact', 'contact_btn');
 
 ?>
+
+
+
+
