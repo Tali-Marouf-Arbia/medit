@@ -31,9 +31,9 @@ add_action( 'wp_enqueue_scripts', 'oceanwp_child_enqueue_parent_style' );
 
 
 
-
+// ajustement css bouton Nous contactez du menu et URL vers page contact
 function contact_btn( $items, $args ) {
-	$items .= '<a href="/contact" class="contact-btn">Nous contacter</a>';
+	$items .= '<li class="menu-item menu-item-type-post_type menu-item-object-page"><a id="contact-btn" href="http://localhost/medit/contact" class="contact-btn">Nous contacter</a>';
 	return $items;
 }
 

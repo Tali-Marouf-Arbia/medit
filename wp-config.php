@@ -95,7 +95,7 @@ define('WP_DEBUG_DISPLAY', true);
 define('WP_DEBUG_LOG', true);
 $sapi_type = php_sapi_name();
 if ( $sapi_type == 'cli' ) {
-    define( 'WP_DEBUG', false );
+    define( 'WP_DEBUG', true );
     error_reporting(0);
     @ini_set('display_errors', 0);
 }
@@ -103,6 +103,8 @@ if ( $sapi_type == 'cli' ) {
 
 define( 'WPMU_PLUGIN_DIR', '/mu-plugin' );
 define( 'DOCKET_CACHE_CONTENT_PATH', '/tmp/docket_cache' );
+set_time_limit(300); // augmente le tmps d execution à 300s pour maj WP
+
 /* That's all, stop editing! Happy blogging. */
 
 /** Absolute path to the WordPress directory. */

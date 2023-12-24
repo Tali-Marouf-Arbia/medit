@@ -11,7 +11,7 @@
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
-
+	
 	<?php wp_head(); ?>
 </head>
 
@@ -60,11 +60,16 @@ $lien=get_field('lien_google_maps', 161);
 		</div>
 		<?php echo $description; ?>
 		<div class="popup-details">
-			<div class="popup-address">
-				<p><b>Le lieu</b></p>
-				<?php echo $lieu; ?>
-				<a class="popup-link" href="<?php echo $lien; ?>" target="_blank">Voir sur Google Maps</a>
-			</div>
+		<div class="popup-address">
+    		<p><b>Le lieu</b></p>
+   			<!-- <//?php var_dump($lieu); ?> -->
+			<?php echo $lieu; ?>
+    		<p><b>Le lien</b></p>
+    		<!-- <pre><//?php var_dump($lien); ?></pre> -->
+
+    		<a class="popup-link" href="<?php echo $lien; ?>" target="_blank">Voir sur Google Maps</a>
+		</div>
+
 			<div class="popup-address">
 				<p><b>La date</b></p>
 				<?php echo $date; ?>
@@ -72,7 +77,7 @@ $lien=get_field('lien_google_maps', 161);
 		</div>
 		<p class="popup-informations">Vous souhaitez plus d'informations concernant cet événement ?</p>
 		<?php
-		// On insère le formulaire de demandes de renseignements
+		// On insère le formulaire de demandes de renseignements => echo
 		echo do_shortcode('[contact-form-7 id="910" title="Formulaire salon New York"]');
 		?>
 	</div>
@@ -81,17 +86,11 @@ $lien=get_field('lien_google_maps', 161);
 <!-- Code pour fermer la popup -->
 
 <script>
-// jQuery(document).ready(function($) {
-//   $('.popup-close').click(function(){
-// 	$(this).parent().hide();
-//   })
-// })
 jQuery(document).ready(function($) {
     $('.popup-close').click(function() {
-        $('.popup-salon').hide();
+        $('.popup-overlay').hide();
     });
 });
-
 </script>
 
 
